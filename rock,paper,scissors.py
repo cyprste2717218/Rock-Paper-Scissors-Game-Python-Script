@@ -1,9 +1,10 @@
 
-import random
+import random #importing random module
 
-choices_dict = {"r":"Rock", "p":"Paper", "s":"Scissors"}
+choices_dict = {"r":"Rock", "p":"Paper", "s":"Scissors"} #dict defined for indexing by user and computer's choices during main game loop
 choices = ["r","p","s"]
-def play_again():
+
+def play_again(): #determining whether entire program loop to be repeated or not
 	print("\n\nPlay another game?\nEnter y for Yes or n for No")
 	print("\n--------------------------------")
 	play_again_user_response = input("...")
@@ -80,23 +81,22 @@ def game_run(rounds):
 			print("Enter a valid input")
 			game_run(rounds)
 		
-		if rounds == 1:
+		if rounds == 1: #check to see if currently on last round of game, if so give result with result function call 
 			result()
 		rounds -= 1
-		game_run(rounds)
+		game_run(rounds) #recursive function call made as long as not on last round
 	
 
 def start(rounds):
-	inp = rounds
-	print("\n-------------------\nBest of " + str(rounds) + ":\n-------------------\nEnter:\n\nr for Rock\np for Paper\ns for Scissors")
-	game_run(inp)
+	print("\n-------------------\nBest of " + str(rounds) + ":\n-------------------\nEnter:\n\nr for Rock\np for Paper\ns for Scissors") #giving rules
+	game_run(rounds)
 	
 def num_games_func():
 	global scores
 	scores = [0,0]
 	global num_games_input
 	num_games_input = input("...")
-	if (num_games_input.isdecimal()):
+	if (num_games_input.isdecimal()): #checking valid input
 		num_games_input = int(num_games_input)
 		if (num_games_input == 3):
 			rounds_remaining = num_games_input
@@ -109,12 +109,12 @@ def num_games_func():
 			start(num_games_input)
 		else:
 			print("Enter a valid input")
-			num_games_func()
+			num_games_func()  #recursive function call of itself for invalid input
 	else:
 		print("Enter a valid input")
-		num_games_func()
+		num_games_func() #recursive function call of itself for invalid input
 
-print("Welcome to Rock, Paper, Scissors:\n\nPlease choose the number of rounds from the list below:\n\n-Three (Enter 3)\n-Five (Enter 5)\n-Ten (Enter 10)")
+print("Welcome to Rock, Paper, Scissors:\n\nPlease choose the number of rounds from the list below:\n\n-Three (Enter 3)\n-Five (Enter 5)\n-Ten (Enter 10)") #introduction
 num_games_func()
 
 
