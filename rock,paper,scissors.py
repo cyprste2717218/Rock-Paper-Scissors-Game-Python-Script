@@ -36,55 +36,54 @@ def result():
 	play_again()
 
 def game_run(rounds):
-	if rounds > 0:
-		comp_choice = random.choice(choices)
-		user_input = input("...")
-		if (user_input == "r"):
+	comp_choice = random.choice(choices)
+	user_input = input("...")
+	if (user_input == "r"):
 
-			if (comp_choice == "r"):
-				print("Both chose " + choices_dict[comp_choice])
-			
-			elif (comp_choice == "p"):
-				print("Computer chose " + choices_dict[comp_choice] + ", computer wins a point")
-				scores[1] += 1
-			
-			elif (comp_choice == "s"):
-				print("You scored a point! Computer chose " + choices_dict[comp_choice])
-				scores[0] += 1
-			
+		if (comp_choice == "r"):
+			print("Both chose " + choices_dict[comp_choice])
 
-		elif (user_input == "p"):
-			if (comp_choice == "r"):
-				print("You scored a point! Computer chose " + choices_dict[comp_choice])
-				scores[0] += 1
-			
-			elif (comp_choice == "p"):
-				print("Both chose " + choices_dict[comp_choice])
-			
-			elif (comp_choice == "s"):
-				print("Computer chose " + choices_dict[comp_choice] + ", computer wins a point")
-				scores[1] += 1
-				
+		elif (comp_choice == "p"):
+			print("Computer chose " + choices_dict[comp_choice] + ", computer wins a point")
+			scores[1] += 1
 
-		elif (user_input == "s"):
-			if (comp_choice == "r"):
-				print("Computer chose " + choices_dict[comp_choice] + ", computer wins a point")
-				scores[1] += 1
-				
-			elif (comp_choice == "p"):
-				print("You scored a point! Computer chose " + choices_dict[comp_choice])
-				scores[0] += 1
-				
-			elif (comp_choice == "s"):
-				print("Both chose " + choices_dict[comp_choice])
-		else:
-			print("Enter a valid input")
-			game_run(rounds)
-		
-		if rounds == 1: #check to see if currently on last round of game, if so give result with result function call 
-			result()
-		rounds -= 1
-		game_run(rounds) #recursive function call made as long as not on last round
+		elif (comp_choice == "s"):
+			print("You scored a point! Computer chose " + choices_dict[comp_choice])
+			scores[0] += 1
+
+
+	elif (user_input == "p"):
+		if (comp_choice == "r"):
+			print("You scored a point! Computer chose " + choices_dict[comp_choice])
+			scores[0] += 1
+
+		elif (comp_choice == "p"):
+			print("Both chose " + choices_dict[comp_choice])
+
+		elif (comp_choice == "s"):
+			print("Computer chose " + choices_dict[comp_choice] + ", computer wins a point")
+			scores[1] += 1
+
+
+	elif (user_input == "s"):
+		if (comp_choice == "r"):
+			print("Computer chose " + choices_dict[comp_choice] + ", computer wins a point")
+			scores[1] += 1
+
+		elif (comp_choice == "p"):
+			print("You scored a point! Computer chose " + choices_dict[comp_choice])
+			scores[0] += 1
+
+		elif (comp_choice == "s"):
+			print("Both chose " + choices_dict[comp_choice])
+	else:
+		print("Enter a valid input")
+		game_run(rounds)
+
+	if rounds == 1: #check to see if currently on last round of game, if so give result with result function call 
+		result()
+	rounds -= 1
+	game_run(rounds) #recursive function call made as long as not on last round
 	
 
 def start(rounds):
